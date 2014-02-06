@@ -30,7 +30,7 @@ public class BinaryTreeManager implements Serializable {
                         int startValue = (Integer) start.getData();
 
                         if (startValue == value) {
-                            System.out.println("Object: " + newNode + "has already existed in the tree.");
+                            System.out.println("Object: " + newNode + " has already existed in the tree.");
                             break;
                         } else {
                             if (startValue > value) {
