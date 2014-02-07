@@ -64,10 +64,10 @@ public class BinaryTreeManager implements Serializable {
         try {
             start = root;
             if (start == null) {
-                if (countLevel > level) {
-                    level = countLevel;
+                if (countLevel > getLevel()) {
+                    setLevel(countLevel);
                 }
-                return level;
+                return getLevel();
             } else if (start.getLeft() != null) {
                 start = start.getLeft();
                 countLevel++;
@@ -96,5 +96,19 @@ public class BinaryTreeManager implements Serializable {
      */
     public void setRoot(BinaryTreeNode root) {
         this.root = root;
+    }
+
+    /**
+     * @return the level
+     */
+    public int getLevel() {
+        return level;
+    }
+
+    /**
+     * @param level the level to set
+     */
+    public void setLevel(int level) {
+        this.level = level;
     }
 }
