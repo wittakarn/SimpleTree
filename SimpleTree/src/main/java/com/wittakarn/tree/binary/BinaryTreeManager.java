@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class BinaryTreeManager implements Serializable {
 
     private BinaryTreeNode root;
+    private int level;
 
     public void add(Object newNode) {
         BinaryTreeNode start = null, tmp = null;
@@ -55,6 +56,31 @@ public class BinaryTreeManager implements Serializable {
         } finally {
             start = null;
             tmp = null;
+        }
+    }
+
+    public int getMaxLevel(BinaryTreeNode root, int countLevel) {
+        BinaryTreeNode start;
+        try {
+            start = root;
+            if (start == null) {
+                if (countLevel > level) {
+                    level = countLevel;
+                }
+                return level;
+            } else if (start.getLeft() != null) {
+                start = start.getLeft();
+                countLevel++;
+                return getMaxLevel(start, countLevel);
+            } else if (start.getRight() != null) {
+                start = start.getRight();
+                countLevel++;
+                return getMaxLevel(start, countLevel);
+            } else {
+                return getMaxLevel(null, countLevel);
+            }
+        } finally {
+            start = null;
         }
     }
 
